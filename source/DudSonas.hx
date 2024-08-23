@@ -53,7 +53,7 @@ class DudSonas extends MusicBeatState
 
 		for (file in Assets.list().filter(image -> image.contains('assets/images/dudsonas/'))) {
 			var path = haxe.io.Path.join(['assets/images/dudsonas/', file]);
-			if (!Assets.isDirectory(path)) {
+			if (!Assets.exists(path)) {
 				allduds.push(file);
 			}
 		}
