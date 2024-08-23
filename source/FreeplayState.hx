@@ -316,7 +316,7 @@ class FreeplayState extends MusicBeatState
 				changeDiff();
 			}
 	
-			if (controls.BACK)
+			if (controls.BACK #if android || FlxG.android.justReleased.BACK #end)
 			{
 				persistentUpdate = false;
 				FlxG.sound.play(Paths.sound('cancelMenu'));

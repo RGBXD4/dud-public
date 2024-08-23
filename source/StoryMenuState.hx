@@ -322,7 +322,7 @@ class StoryMenuState extends MusicBeatState
 			oldsong = WeekData.weeksList[curWeek];
 		}
 
-		if (controls.BACK && !movedBack && !selectedWeek)
+		if (controls.BACK #if android || FlxG.android.justReleased.BACK #end && !movedBack && !selectedWeek)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			movedBack = true;

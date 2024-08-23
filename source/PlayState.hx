@@ -758,6 +758,11 @@ class PlayState extends MusicBeatState
 		Paths.clearUnusedMemory();
 		
 		CustomFadeTransition.nextCamera = camOther;
+
+		#if android
+		addAndroidControls();
+		androidc.visible = true;
+		#end
 	}
 
 	#if (!flash && sys)
@@ -1744,7 +1749,7 @@ class PlayState extends MusicBeatState
 			trace(random[FlxG.random.int(0, random.length)]);
 		}
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (controls.PAUSE #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnLuas('onPause', [], false);
 			if(ret != FunkinLua.Function_Stop) {
