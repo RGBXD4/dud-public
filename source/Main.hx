@@ -18,10 +18,10 @@ import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
 import haxe.io.Path;
 import Discord.DiscordClient;
+#end
 import sys.FileSystem;
 import sys.io.File;
 import sys.io.Process;
-#end
 
 using StringTools;
 
@@ -99,7 +99,7 @@ Generic.mode = ROOTDATA;
 			FileSystem.createDirectory(Generic.returnPath() + 'assets/videos');
 		}
 
-    for (video in lol) {
+    for (video in losvideos) {
 		Generic.copyContent(Paths._video(video), Paths._video(video));
     }
 	}
