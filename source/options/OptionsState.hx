@@ -61,6 +61,8 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
+		FlxG.mouse.visible = true;
+
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.color = 0xFFea71fd;
 		bg.updateHitbox();
@@ -99,9 +101,8 @@ class OptionsState extends MusicBeatState
 		ClientPrefs.saveSettings();
 
 		#if android
-		addVirtualPad(FULL, A_B);
+		addVirtualPad(UP_DOWN, B);
 		#end
-
 		super.create();
 	}
 
@@ -122,25 +123,11 @@ class OptionsState extends MusicBeatState
 				changeSelection(1);
 			}
 	
-			if (controls.BACK) {
+			if (controls.BACK /*#if android || FlxG.android.justReleased.BACK #end*/) {
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new MainMenuState());
 			}
-	
-			if (controls.ACCEPT) {
-				hide(false);
-				openSelectedSubstate(options[curSelected]);
-			}
-			if(FlxG.mouse.wheel != 0)
-			{
-				changeSelection(-1 * FlxG.mouse.wheel);
-			}
-		
-			if (controls.BACK) {
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new MainMenuState());
-			}
-		
+
 			if (FlxG.mouse.justPressed) {
 				hide(false);
 				openSelectedSubstate(options[curSelected]);

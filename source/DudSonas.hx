@@ -51,13 +51,6 @@ class DudSonas extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		for (file in Assets.list().filter(image -> image.contains('assets/images/dudsonas/'))) {
-			var path = haxe.io.Path.join(['assets/images/dudsonas/', file]);
-			if (!Assets.exists(path)) {
-				allduds.push(file);
-			}
-		}
-
 		mouseobject = new FlxSprite(0, 0).makeGraphic(1, 1, 0xFFFFFFFF);
 		add(mouseobject);
 
