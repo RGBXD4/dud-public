@@ -42,9 +42,19 @@ class Main extends Sprite
 		Lib.current.addChild(new Main());
 	}
 
+	static final losvideos:Array<String> = [
+				"deleted",
+				"Fart",
+				"fly",
+				"uhoh",
+	];
+	]
+
 	public function new()
 	{
 		super();
+
+		Generic.initCrashHandler();
 
 		if (stage != null)
 		{
@@ -68,17 +78,6 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
-		var stageWidth:Int = Lib.current.stage.stageWidth;
-		var stageHeight:Int = Lib.current.stage.stageHeight;
-
-		if (zoom == -1)
-		{
-			var ratioX:Float = stageWidth / gameWidth;
-			var ratioY:Float = stageHeight / gameHeight;
-			zoom = Math.min(ratioX, ratioY);
-			gameWidth = Math.ceil(stageWidth / zoom);
-			gameHeight = Math.ceil(stageHeight / zoom);
-		}
 	
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
@@ -95,7 +94,7 @@ class Main extends Sprite
 
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work
-	#if CRASH_HANDLER
+	#if (!android && CRASH_HANDLER)
 	function onCrash(e:UncaughtErrorEvent):Void
 	{
 		var errMsg:String = "";
@@ -130,7 +129,7 @@ class Main extends Sprite
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 
 		Application.current.window.alert(errMsg, "Error!");
-		DiscordClient.shutdown();
+		// DiscordClient.shutdown();
 		Sys.exit(1);
 	}
 	#end
