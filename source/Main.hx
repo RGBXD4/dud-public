@@ -48,7 +48,6 @@ class Main extends Sprite
 				"fly",
 				"uhoh",
 	];
-	]
 
 	public function new()
 	{
