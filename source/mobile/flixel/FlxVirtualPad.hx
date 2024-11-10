@@ -39,6 +39,7 @@ class FlxVirtualPad extends FlxSpriteGroup
 	public var buttonY:FlxButton = new FlxButton(0, 0);
 	public var buttonZ:FlxButton = new FlxButton(0, 0);
 
+	public var orgAlpha:Float = 0.75;
 	/**
 	 * Create a gamepad.
 	 *
@@ -48,6 +49,8 @@ class FlxVirtualPad extends FlxSpriteGroup
 	public function new(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
 		super();
+orgAlpha = alphaAlt;
+
 
 		scrollFactor.set();
 
@@ -173,7 +176,7 @@ class FlxVirtualPad extends FlxSpriteGroup
 		button.immovable = true;
 		button.scrollFactor.set();
 		button.color = Color;
-		button.alpha:Float = 0.75;
+		button.alpha = orgAlpha;
 		#if FLX_DEBUG
 		button.ignoreDrawDebug = true;
 		#end
