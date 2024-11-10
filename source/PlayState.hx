@@ -758,6 +758,10 @@ class PlayState extends MusicBeatState
 		Paths.clearUnusedMemory();
 		
 		CustomFadeTransition.nextCamera = camOther;
+
+		#if mobile
+	        addMobileControls();
+		#end
 	}
 
 	#if (!flash && sys)
