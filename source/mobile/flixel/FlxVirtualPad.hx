@@ -49,8 +49,6 @@ class FlxVirtualPad extends FlxSpriteGroup
 	public function new(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
 		super();
-orgAlpha = alphaAlt;
-
 
 		scrollFactor.set();
 
