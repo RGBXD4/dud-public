@@ -1,6 +1,6 @@
-package android.flixel;
+package mobile.flixel;
 
-import android.flixel.FlxButton;
+import mobile.flixel.FlxButton;
 import flixel.FlxG;
 import flixel.graphics.frames.FlxTileFrames;
 import flixel.group.FlxSpriteGroup;
