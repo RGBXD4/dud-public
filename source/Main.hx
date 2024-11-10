@@ -16,11 +16,15 @@ import openfl.display.StageScaleMode;
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
-import haxe.io.Path;
 import Discord.DiscordClient;
 import sys.FileSystem;
 import sys.io.File;
 import sys.io.Process;
+#end
+import haxe.io.Path;
+#if android
+import android.content.Context;
+import android.os.Build;
 #end
 
 using StringTools;
@@ -45,6 +49,10 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
+
+		#if android
+		Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
+		#end
 
 		if (stage != null)
 		{
