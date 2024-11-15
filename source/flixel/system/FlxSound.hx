@@ -593,7 +593,7 @@ class FlxSound extends FlxBasic
 		if (_channel != null)
 		{
 			_channel.soundTransform = _transform;
-
+#if desktop
 			@:privateAccess
 			if(_channel.__source != null)
 			{
@@ -603,6 +603,7 @@ class FlxSound extends FlxBasic
 				// trace('changing $name pitch new $_pitch');
 				#end
 			}
+			#end
 		}
 	}
 
